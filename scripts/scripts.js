@@ -146,6 +146,7 @@ function loadDelayed() {
 }
 
 async function loadPage() {
+  console.log('sean site');
   await loadEager(document);
   await loadLazy(document);
   loadDelayed();
