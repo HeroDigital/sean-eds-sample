@@ -1,0 +1,14 @@
+@use "../../foundation/icons";
+@use "./placeholders";
+
+.icon {
+	@extend %icon;
+
+	// Icon modifiers
+	@each $icon, $base64 in icons.$icons {
+		&.icon-#{$icon} {
+			-webkit-mask-image: url($base64);
+			mask-image: url($base64);
+		}
+	}
+}

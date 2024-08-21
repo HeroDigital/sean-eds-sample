@@ -1,0 +1,9 @@
+@use "../../shared";
+
+/// ### Gets any border radius value
+/// @param {String...} $key - The roundness key
+/// @return {String} - The roundness value
+/// @throw {Error} - If the key is not valid
+@function border-radius($key) {
+	@return shared.theme-get(roundness, $key);
+}

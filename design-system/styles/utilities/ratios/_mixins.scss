@@ -1,0 +1,24 @@
+@use "sass:map";
+@use "sass:string";
+@use "../../shared";
+
+$_aspect-ratios: shared.theme-get(ratios);
+
+/// ### Generates a aspect-ratio rule that corresponds to a specific aspect-ratio from ratios map
+/// @param {String} $key - The aspect-ratio key
+/// @throw {Error} - If the specified aspect-ratio does not exist in the ratios map or the property isn't valid
+@mixin aspect-ratio($ratio, $important: false) {
+	$_ratio: null;
+
+	@each $key in map.values(shared.theme-get(ratios)) {
+		@if $key == $ratio {
+			$_ratio: string.unquote($key);
+		}
+	}
+
+	@if not $_ratio {
+		@error "Aspect ratio #{$ratio} is not defined in $_aspect-ratio.";
+	}
+
+	aspect-ratio: $_ratio shared.is-important($important);
+}

@@ -1,0 +1,11 @@
+@use "sass:map";
+@use "../../foundation/theme" as *;
+@use "../../shared";
+
+$_spacing: shared.theme-get(spacing);
+
+$spacing: () !default;
+
+@each $key, $value in $_spacing {
+	$spacing: map.merge($spacing, (#{$key}: shared.rem($value)));
+}

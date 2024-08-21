@@ -1,0 +1,40 @@
+@use "sass:list";
+@use "./functions" as *;
+
+/// ### Generates a media query with a prefers-reduced-motion: no-preference
+/// @param {String} $value - The preferred reduced motion value
+@mixin reduced-motion($value) {
+	@at-root {
+		@media (prefers-reduced-motion: $value) {
+			& {
+				@content;
+			}
+		}
+	}
+}
+
+/// ### Generates a transition effect for all specified properties
+/// @param {List<String>} $duration - Sets the length of time a transition animation should take to complete. By default, the value is 0s, meaning that no animation will occur.
+/// @param {List<String>} $easing - Sets how intermediate values are calculated for CSS properties being affected by a transition effect.
+/// @param {List<String>} $delay - The length of time to wait before starting a property's transition effect when its value changes.
+/// @param {String} $reduced-motion - The preferred reduced motion value
+/// @param {Array<String>} $properties - Array of properties to transition.
+@mixin transition($duration, $easing, $delay: "", $reduced-motion: "no-preference", $properties) {
+	$transition: ();
+	$duration: duration(list.nth($duration, 1), list.nth($duration, 2));
+	$easing: easing(list.nth($easing, 1), list.nth($easing, 2));
+
+	@if $delay == "" {
+		$delay: 0s;
+	} @else {
+		$delay: delay(list.nth($delay, 1), list.nth($delay, 2));
+	}
+
+	@each $property in $properties {
+		$transition: list.append($transition, ($property $duration $easing $delay), $separator: comma);
+	}
+
+	@include reduced-motion($reduced-motion) {
+		transition: $transition;
+	}
+}

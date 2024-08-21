@@ -1,0 +1,294 @@
+{
+	"colors": {
+		"brand": {
+			"5": "#F3E8FF",
+			"10": "#D9B3FF",
+			"25": "#B580FF",
+			"50": "#8F47FF",
+			"100": "#6610F2",
+			"110": "#4A0DCC",
+			"120": "#360A99"
+		},
+		"neutral": {
+			"0": "#FFFFFF",
+			"5": "#E8E8E8",
+			"10": "#D4D7D9",
+			"20": "#A5A9AC",
+			"40": "#50555A",
+			"60": "#353A3E",
+			"80": "#171A1C",
+			"100": "#040505"
+		},
+		"accent": {
+			"5": "#FFF3E0",
+			"10": "#FFE0B2",
+			"25": "#FFCC80",
+			"50": "#FFB74D",
+			"100": "#FF9800",
+			"110": "#FB8C00",
+			"120": "#F57C00"
+		},
+		"alert": {
+			"success": {
+				"10": "#EEF6EC",
+				"50": "#ABD0A1",
+				"100": "#57A144"
+			},
+			"warning": {
+				"10": "#FFF5D6",
+				"50": "#FFE285",
+				"100": "#FFCE34"
+			},
+			"fail": {
+				"10": "#F7E8E8",
+				"50": "#D58D8D",
+				"100": "#AB1B1B"
+			}
+		}
+	},
+	"typography": {
+		"primary": {
+			"name": "'Sofia Pro'",
+			"src": [
+				{ "url": "'fonts/SofiaPro-Regular.woff2'", "format": "'woff2'" },
+				{ "url": "'fonts/SofiaPro-Regular.woff'", "format": "'woff'" }
+			],
+			"fallbacks": ["'Arial'", "Helvetica", "sans-serif"],
+			"variants": [
+				{
+					"weight": 300,
+					"src": [
+						{ "url": "'fonts/SofiaPro-Light.woff2'", "format": "'woff2'" },
+						{ "url": "'fonts/SofiaPro-Light.woff'", "format": "'woff'" }
+					]
+				},
+				{
+					"weight": 500,
+					"src": [
+						{ "url": "'fonts/SofiaPro-Medium.woff2'", "format": "'woff2'" },
+						{ "url": "'fonts/SofiaPro-Medium.woff'", "format": "'woff'" }
+					]
+				},
+				{
+					"weight": 600,
+					"src": [
+						{ "url": "'fonts/SofiaPro-SemiBold.woff2'", "format": "'woff2'" },
+						{ "url": "'fonts/SofiaPro-SemiBold.woff'", "format": "'woff'" }
+					]
+				},
+				{
+					"weight": 800,
+					"src": [
+						{ "url": "'fonts/SofiaPro-Bold.woff2'", "format": "'woff2'" },
+						{ "url": "'fonts/SofiaPro-Bold.woff'", "format": "'woff'" }
+					]
+				},
+				{
+					"weight": 900,
+					"src": [
+						{ "url": "'fonts/SofiaPro-Black.woff2'", "format": "'woff2'" },
+						{ "url": "'fonts/SofiaPro-Black.woff'", "format": "'woff'" }
+					]
+				}
+			]
+		},
+		"secondary": {
+			"name": "'Chronicle Display'",
+			"src": [{ "url": "'fonts/ChronicleDisp-Roman.otf'", "format": "'opentype'" }],
+			"fallbacks": ["'Times New Roman'", "Times", "serif"],
+			"variants": [
+				{
+					"weight": 400,
+					"style": "italic",
+					"src": [
+						{
+							"url": "'fonts/ChronicleDisp-Italic.otf'",
+							"format": "'opentype'"
+						}
+					]
+				},
+				{
+					"weight": 200,
+					"src": [
+						{
+							"url": "'fonts/ChronicleDisp-XLight.otf'",
+							"format": "'opentype'"
+						}
+					]
+				},
+				{
+					"weight": 200,
+					"style": "italic",
+					"src": [
+						{
+							"url": "'fonts/ChronicleDisp-XLightItalic.otf'",
+							"format": "'opentype'"
+						}
+					]
+				},
+				{
+					"weight": 300,
+					"src": [{ "url": "'fonts/ChronicleDisp-Light.otf'", "format": "'opentype'" }]
+				},
+				{
+					"weight": 300,
+					"style": "italic",
+					"src": [
+						{
+							"url": "'fonts/ChronicleDisp-LightItalic.otf'",
+							"format": "'opentype'"
+						}
+					]
+				},
+				{
+					"weight": 600,
+					"src": [
+						{
+							"url": "'fonts/ChronicleDisp-Semibold.otf'",
+							"format": "'opentype'"
+						}
+					]
+				},
+				{
+					"weight": 600,
+					"style": "italic",
+					"src": [
+						{
+							"url": "'fonts/ChronicleDisp-SemiboldItalic.otf'",
+							"format": "'opentype'"
+						}
+					]
+				},
+				{
+					"weight": 700,
+					"src": [{ "url": "'fonts/ChronicleDisp-Bold.otf'", "format": "'opentype'" }]
+				},
+				{
+					"weight": 700,
+					"style": "italic",
+					"src": [
+						{
+							"url": "'fonts/ChronicleDisp-BoldItalic.otf'",
+							"format": "'opentype'"
+						}
+					]
+				},
+				{
+					"weight": 900,
+					"src": [{ "url": "'fonts/ChronicleDisp-Black.otf'", "format": "'opentype'" }]
+				},
+				{
+					"weight": 900,
+					"style": "italic",
+					"src": [
+						{
+							"url": "'fonts/ChronicleDisp-BlackItalic.otf'",
+							"format": "'opentype'"
+						}
+					]
+				}
+			]
+		}
+	},
+	"grid": {
+		"columns": 12
+	},
+	"container": {
+		"sm": "540px",
+		"md": "720px",
+		"lg": "960px",
+		"xl": "1140px",
+		"xxl": "1500px"
+	},
+	"spacing": {
+		"xxs": "4px",
+		"xs": "8px",
+		"sm": "16px",
+		"md": "24px",
+		"lg": "32px",
+		"xl": "48px",
+		"xxl": "64px",
+		"xxxl": "80px",
+		"jumbo": "128px"
+	},
+	"roundness": {
+		"sm": "4px",
+		"md": "8px",
+		"lg": "16px"
+	},
+	"elevation": {
+		"10": "0 4px 10px rgb(0 0 0 / 10%)"
+	},
+	"breakpoints": {
+		"sm": "576px",
+		"md": "768px",
+		"lg": "992px",
+		"xl": "1200px",
+		"xxl": "1400px"
+	},
+	"ratios": {
+		"16-9": "'16 / 9'",
+		"16-5": "'16 / 5'",
+		"4-3": "'4 / 3'",
+		"3-4": "'3 / 4'",
+		"1-1": "'1 / 1'"
+	},
+	"z-index": {
+		"negative": -1,
+		"basic": 1,
+		"lowest": 5,
+		"low": 25,
+		"intermediate": 50,
+		"high": 75,
+		"important": 100
+	},
+	"motion": {
+		"durations": {
+			"productive": {
+				"xs": 150,
+				"sm": 250,
+				"md": 350,
+				"lg": 450,
+				"xl": 550,
+				"xxl": 650
+			},
+			"expressive": {
+				"xs": 300,
+				"sm": 500,
+				"md": 700,
+				"lg": 900,
+				"xl": 1100,
+				"xxl": 1300
+			}
+		},
+		"easings": {
+			"direct": {
+				"direct-curve": [0.1, 0.25, 0.25, 1]
+			},
+			"indirect": {
+				"enter-curve": [0.2, 0.6, 0.25, 1],
+				"exit-curve": [0.65, 0, 0.75, 0],
+				"standard-curve": [0.5, 0, 0, 1],
+				"linear-curve": [0, 0, 1, 1]
+			}
+		},
+		"delays": {
+			"productive": {
+				"xs": 30,
+				"sm": 50,
+				"md": 70,
+				"lg": 90,
+				"xl": 110,
+				"xxl": 130
+			},
+			"expressive": {
+				"xs": 60,
+				"sm": 100,
+				"md": 140,
+				"lg": 180,
+				"xl": 220,
+				"xxl": 260
+			}
+		}
+	}
+}

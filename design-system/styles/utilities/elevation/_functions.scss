@@ -1,0 +1,9 @@
+@use "../../shared";
+
+/// ### Gets any shadow value
+/// @param {String...} $key - The elevation key
+/// @return {String} - The elevation value
+/// @throw {Error} - If the key is not valid
+@function shadow($key) {
+	@return shared.theme-get(elevation, $key);
+}

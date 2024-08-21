@@ -1,0 +1,42 @@
+@use "../../shared";
+@use "./variables";
+
+/// ### Gets any font size value
+/// @param {String...} $key - The font size key
+/// @return {String} - The font size value
+/// @throw {Error} - If the key is not valid
+@function font-size($key) {
+	@return shared.get-value-from-map(variables.$font-sizes, $key);
+}
+
+/// ### Gets any font weight value
+/// @param {String...} $key - The font weight key
+/// @return {String} - The font weight value
+/// @throw {Error} - If the key is not valid
+@function font-weight($key) {
+	@return shared.get-value-from-map(variables.$font-weights, $key);
+}
+
+/// ### Gets any line height value
+/// @param {String...} $key - The line height key
+/// @return {String} - The line height value
+/// @throw {Error} - If the key is not valid
+@function line-height($key) {
+	@return shared.get-value-from-map(variables.$line-heights, $key);
+}
+
+/// ### Gets any letter spacing value
+/// @param {String...} $key - The letter spacing key
+/// @return {String} - The letter spacing value
+/// @throw {Error} - If the key is not valid
+@function letter-spacing($key) {
+	@return shared.get-value-from-map(variables.$letter-spacings, $key);
+}
+
+/// ### Gets any text shadow value
+/// @param {String...} $key - The text shadow key
+/// @return {String} - The text shadow value
+/// @throw {Error} - If the key is not valid
+@function text-shadow($key) {
+	@return shared.get-value-from-map(variables.$text-shadows, $key);
+}

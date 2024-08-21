@@ -1,0 +1,25 @@
+%hide-scroll-bars {
+	-ms-overflow-style: none; /* IE and Edge */
+	scrollbar-width: none; /* Firefox */
+
+	&::-webkit-scrollbar {
+		display: none;
+	}
+}
+
+%list-reset {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+%button-reset {
+	background-color: transparent;
+	border: none;
+	outline: none;
+	padding: 0;
+}
+
+%link-reset {
+	text-decoration: none;
+}

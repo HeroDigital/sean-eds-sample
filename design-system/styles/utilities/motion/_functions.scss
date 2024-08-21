@@ -1,0 +1,25 @@
+@use "../../shared";
+
+/// ### Gets any easing value
+/// @param {String} $type - The key for easing type
+/// @param {String} $name - The key for easing name
+/// @throw {Error} - An error is thrown if the `$theme` variable is not set, indicating that the theme has not been generated or imported
+@function easing($type, $name) {
+	@return cubic-bezier(#{shared.theme-get(motion, easings, $type, $name)});
+}
+
+/// ### Gets duration value
+/// @param {String} $type - The key for duration type
+/// @param {String} $name - The key for duration name
+/// @throw {Error} - An error is thrown if the `$theme` variable is not set, indicating that the theme has not been generated or imported
+@function duration($type, $name) {
+	@return #{shared.theme-get(motion, durations, $type, $name)}ms;
+}
+
+/// ### Gets delay value
+/// @param {String} $type - The key for delay type
+/// @param {String} $name - The key for delay name
+/// @throw {Error} - An error is thrown if the `$theme` variable is not set, indicating that the theme has not been generated or imported
+@function delay($type, $name) {
+	@return #{shared.theme-get(motion, delays, $type, $name)}ms;
+}

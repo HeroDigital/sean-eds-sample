@@ -1,0 +1,72 @@
+@use "sass:map";
+@use "../../shared";
+@use "../breakpoints";
+@use "./variables";
+
+/// ### Generates the base and responsive styles for a mapped element
+/// @param {Map} $target - The target element
+/// @output - The base and responsive styles for the element
+@mixin responsive-typography($target, $important: false) {
+	// Breakpoints
+	$mobile: map.get($target, mobile);
+	$tablet: map.get($target, tablet);
+	$desktop: map.get($target, desktop);
+
+	// Default properties
+	$font-size: map.get($target, font-size);
+	$font-family: map.get($target, font-family);
+	$font-weight: map.get($target, font-weight);
+	$line-height: map.get($target, line-height);
+	$letter-spacing: map.get($target, letter-spacing);
+	$text-transform: map.get($target, text-transform);
+
+	font-size: if($font-size, $font-size, inherit) shared.is-important($important);
+	font-family: if($font-family, $font-family, inherit) shared.is-important($important);
+	font-weight: if($font-weight, $font-weight, inherit) shared.is-important($important);
+	line-height: if($line-height, $line-height, inherit) shared.is-important($important);
+	letter-spacing: if($letter-spacing, $letter-spacing, inherit) shared.is-important($important);
+	text-transform: if($text-transform, $text-transform, inherit) shared.is-important($important);
+
+	@if $mobile != null {
+		font-size: map.get($mobile, font-size) shared.is-important($important);
+		line-height: map.get($mobile, line-height) shared.is-important($important);
+	}
+
+	@if $tablet != null {
+		@include breakpoints.media-query(md) {
+			font-size: map.get($tablet, font-size) shared.is-important($important);
+			line-height: map.get($tablet, line-height) shared.is-important($important);
+		}
+	}
+
+	@if $desktop != null {
+		@include breakpoints.media-query(lg) {
+			font-size: map.get($desktop, font-size) shared.is-important($important);
+			line-height: map.get($desktop, line-height) shared.is-important($important);
+		}
+	}
+}
+
+/// ### Gets any heading text value
+/// @param {String...} $key - The heading text key
+/// @throw {Error} - If the key is not valid
+@mixin heading($key, $important: false) {
+	$element: shared.get-value-from-map(variables.$typography-elements, headings, $key);
+	@include responsive-typography($element, $important);
+}
+
+/// ### Gets any body text value
+/// @param {String...} $key - The body text key
+/// @throw {Error} - If the key is not valid
+@mixin body($key, $important: false) {
+	$element: shared.get-value-from-map(variables.$typography-elements, bodies, $key);
+	@include responsive-typography($element, $important);
+}
+
+/// ### Gets any specialty text value
+/// @param {String...} $key - The specialty text key
+/// @throw {Error} - If the key is not valid
+@mixin specialty($key, $important: false) {
+	$element: shared.get-value-from-map(variables.$typography-elements, specialty, $key);
+	@include responsive-typography($element, $important);
+}

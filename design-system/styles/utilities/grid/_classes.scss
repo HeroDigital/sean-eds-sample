@@ -1,0 +1,10 @@
+@use "../../foundation/theme" as *;
+@use "../../shared";
+@use "./mixins";
+
+$_columns: shared.theme-get(grid, columns);
+$_default-columns: if($_columns, $_columns, 12);
+
+.grid {
+	@include mixins.grid($_default-columns);
+}

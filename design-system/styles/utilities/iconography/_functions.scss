@@ -1,0 +1,13 @@
+@use "../../foundation/icons" as *;
+@use "../../shared";
+
+/// ### Gets an icon from the map
+/// @param {String} $name - The icon name
+/// @param {Boolean} $url - Whether to return the icon as url or plain string
+/// @return {String} - The icon
+/// @throw {Error} - If the name is not valid
+@function icon($name, $url: false) {
+	$icon: shared.get-value-from-map($icons, $name);
+
+	@return if($url, url($icon), $icon);
+}

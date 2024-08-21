@@ -1,0 +1,7 @@
+@use "../shared/functions";
+
+$_z-index: functions.theme-get(z-index);
+
+@function z-index($key) {
+	@return functions.get-value-from-map($_z-index, $key);
+}

@@ -1,0 +1,11 @@
+@use "sass:map";
+@use "../../shared";
+@use "./mixins" as *;
+
+$_ratios: shared.theme-get(ratios);
+
+@each $value in map.values(shared.theme-get(ratios)) {
+	.ratio-#{shared.replace($value, " / ", "-")} {
+		@include aspect-ratio($value, true);
+	}
+}

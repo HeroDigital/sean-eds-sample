@@ -1,0 +1,13 @@
+@use "./variables";
+
+@each $key, $color in variables.$base-colors {
+	@each $variant, $hex in $color {
+		.bg-#{$key}-#{"" + $variant} {
+			background-color: $hex;
+		}
+
+		.#{$key}-#{"" + $variant} {
+			color: $hex;
+		}
+	}
+}

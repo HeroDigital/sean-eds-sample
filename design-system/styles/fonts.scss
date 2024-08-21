@@ -1,0 +1,75 @@
+@use "sass:map";
+@use "sass:list";
+@use "sass:meta";
+@use "./shared";
+
+/// ### Generates a valid font src from the theme sources map
+/// @param {Map | List} $sources - A map/list of font sources, where each key is a URL to a font file and each value is the format of the font file
+/// @return {String} - A string containing a valid font src that can be used in a `@font-face` rule
+/// @throw {Error} - An error if the `$sources-map` argument is null or an empty list
+@function _get-sources($sources) {
+	$mapped_sources: ();
+
+	@if $sources == null or list.length($sources) == 0 {
+		@error "A valid sources list must be provided";
+	}
+
+	@if meta.type-of($sources) == "map" {
+		$mapped_sources: list.append($mapped_sources, url(map.get($sources, url)) format(map.get($sources, format)), comma);
+	}
+
+	@if meta.type-of($sources) == "list" {
+		@each $source in $sources {
+			$mapped_sources: list.append($mapped_sources, url(map.get($source, url)) format(map.get($source, format)), comma);
+		}
+	}
+
+	@return $mapped_sources;
+}
+
+// Iterate and create all available types of fonts
+$_typography: shared.theme-get(typography) !default;
+
+@each $key, $font in $_typography {
+	// Main font configuration
+	$font-family: map.get($font, name);
+
+	@font-face {
+		font-family: $font-family;
+		font-weight: map.get($font, weight);
+		font-style: map.get($font, style);
+		src: _get-sources(map.get($font, src));
+	}
+
+	// Variants configuration
+	$variants: map.get($font, variants);
+
+	@if $variants != null {
+		@if meta.type-of($variants) == "map" {
+			@font-face {
+				font-family: $font-family;
+				font-weight: map.get($variants, weight);
+				font-style: map.get($variants, style);
+				src: _get-sources(map.get($variants, src));
+			}
+		}
+
+		@if meta.type-of($variants) == "list" and list.length($variants) > 0 {
+			@each $variant in $variants {
+				@font-face {
+					font-family: $font-family;
+					font-weight: map.get($variant, weight);
+					font-style: map.get($variant, style);
+					src: _get-sources(map.get($variant, src));
+				}
+			}
+		}
+	}
+}
+
+// Fonts custom properties declaration
+:root {
+	@each $key, $font in $_typography {
+		--font-#{$key}: "#{map.get($font, name)}", #{map.get($font, fallbacks)};
+	}
+}

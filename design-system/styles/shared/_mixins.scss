@@ -1,0 +1,30 @@
+@use "../utilities/z-index" as *;
+
+/// A mixin to increase any elements clickable area
+///
+/// **CAVEAT**: Requires the element to not use the ::after pseudo element
+/// @param {Number} $size [40px] - The clickable area size
+/// @output - The pseudo element configuration to increase the clickable area of the target element
+@mixin increase-clickable-area($size: 40px) {
+	position: relative;
+
+	&::after {
+		content: "";
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		width: $size;
+		height: $size;
+		transform: translate(-50%, -50%);
+		cursor: pointer;
+	}
+}
+
+/// A mixin to style an element's scroll bars
+/// @param {String} $bg-color - The scrollbar background color
+/// @param {String} $thumb-color - The scrollbar thumb color
+/// @output - The scrollbar configuration
+@mixin custom-scrollbar($bg-color: #cccccc, $thumb-color: #666666) {
+	scrollbar-color: $thumb-color $bg-color;
+	scrollbar-width: thin;
+}

@@ -1,0 +1,60 @@
+@use "sass:math";
+@use "sass:color";
+@use "../../shared";
+
+/// ### Gets any neutral color
+/// @param {String} $key - The color key
+/// @return {String} - The color
+/// @throw {Error} - If the key is not valid
+@function neutral($key) {
+	@return shared.theme-get(colors, neutral, $key);
+}
+
+/// ### Gets any brand color
+/// @param {String} $key - The color key
+/// @return {String} - The color
+/// @throw {Error} - If the key is not valid
+@function brand($key) {
+	@return shared.theme-get(colors, brand, $key);
+}
+
+/// ### Gets any typography color
+/// @param {String} $key - The color key
+/// @return {String} - The color
+/// @throw {Error} - If the key is not valid
+@function typography($key) {
+	@return shared.theme-get(colors, typography, $key);
+}
+
+/// ### Gets any success color
+/// @param {String} $key - The color key
+/// @return {String} - The color
+/// @throw {Error} - If the key is not valid
+@function success($key) {
+	@return shared.theme-get(colors, alert, success, $key);
+}
+
+/// ### Gets any fail color
+/// @param {String} $key - The color key
+/// @return {String} - The color
+/// @throw {Error} - If the key is not valid
+@function fail($key) {
+	@return shared.theme-get(colors, alert, fail, $key);
+}
+
+/// ### Gets any accent color
+/// @param {String} $key - The color key
+/// @return {String} - The color
+/// @throw {Error} - If the key is not valid
+@function accent($key) {
+	@return shared.theme-get(colors, accent, $key);
+}
+
+/// ### Converts a hexadecimal color code to an RGBA color with a specified alpha (opacity)
+/// @param {Color} $hex - The hexadecimal color code to convert
+/// @param {Number} $alpha - The alpha value (opacity) for the RGBA color. Should be between 0 and 100
+/// @return {Color} - The resulting RGBA color with the specified alpha
+@function safe-rgba($hex, $alpha) {
+	$alpha: max(min($alpha, 100), 0);
+	@return rgba(color.red($hex), color.green($hex), color.blue($hex), math.div($alpha, 100));
+}

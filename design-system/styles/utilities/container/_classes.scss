@@ -1,0 +1,45 @@
+@use "../../shared";
+
+$_breakpoints: shared.theme-get(breakpoints);
+$_container: shared.theme-get(container);
+
+%base-container {
+	width: 100%;
+	margin: 0 auto;
+	padding-left: shared.theme-get(spacing, xs);
+	padding-right: shared.theme-get(spacing, xs);
+}
+
+.container {
+	@extend %base-container;
+
+	@each $key, $size in $_container {
+		@media (min-width: shared.theme-get(breakpoints, $key)) {
+			max-width: $size;
+		}
+	}
+
+	&.fluid {
+		max-width: 100%;
+	}
+}
+
+@each $key, $size in $_container {
+	.container-#{$key} {
+		@extend %base-container;
+
+		@media (min-width: shared.theme-get(breakpoints, $key)) {
+			max-width: $size;
+		}
+	}
+
+	@each $size, $breakpoint in $_breakpoints {
+		.container-#{$size}-#{$key} {
+			@extend %base-container;
+
+			@media (min-width: $breakpoint) {
+				max-width: $size;
+			}
+		}
+	}
+}

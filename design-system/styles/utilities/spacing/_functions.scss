@@ -1,0 +1,10 @@
+@use "../../shared";
+@use "./variables";
+
+/// ### Gets any size value
+/// @param {String...} $key - The size key
+/// @return {String} - The size value
+/// @throw {Error} - If the key is not valid
+@function size($key) {
+	@return shared.get-value-from-map(variables.$spacing, $key);
+}

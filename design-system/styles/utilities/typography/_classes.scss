@@ -1,0 +1,88 @@
+@use "sass:map";
+@use "./variables";
+@use "./mixins";
+
+// Font sizes
+// Base font sizes
+@each $size, $value in variables.$font-sizes {
+	#{".text-" + $size} {
+		font-size: $value;
+	}
+}
+
+// Headings
+@each $name, $heading in map.get(variables.$typography-elements, headings) {
+	.#{$name} {
+		@include mixins.responsive-typography($heading, true);
+	}
+}
+
+// Body
+@each $name, $body in map.get(variables.$typography-elements, bodies) {
+	.#{$name} {
+		@include mixins.responsive-typography($body, true);
+	}
+}
+
+// Specialty
+@each $name, $specialty in map.get(variables.$typography-elements, specialty) {
+	.#{$name} {
+		@include mixins.responsive-typography($specialty, true);
+	}
+}
+
+// Font weights
+@each $name, $value in variables.$font-weights {
+	#{".font-" + $name} {
+		font-weight: $value !important;
+	}
+}
+
+// Font styles
+@each $name, $value in variables.$font-styles {
+	#{".font-" + $name} {
+		font-style: $value !important;
+	}
+}
+
+// Line heights
+@each $name, $value in variables.$line-heights {
+	.line-height-#{$name} {
+		line-height: $value !important;
+	}
+}
+
+// Letter spacing
+@each $name, $value in variables.$letter-spacings {
+	.letter-spacing-#{$name} {
+		letter-spacing: $value !important;
+	}
+}
+
+// Text shadow
+@each $name, $value in variables.$text-shadows {
+	.text-shadow-#{$name} {
+		text-shadow: $value !important;
+	}
+}
+
+// Text decoration
+@each $name, $value in variables.$text-decorations {
+	.text-#{$name} {
+		text-decoration: $value !important;
+	}
+}
+
+// Text transform
+@each $name, $value in variables.$text-transforms {
+	.text-#{$name} {
+		text-transform: $value !important;
+	}
+}
+
+// Text alignment
+@each $name, $value in variables.$text-alignments {
+	.text-#{$name} {
+		text-align: $value !important;
+	}
+}

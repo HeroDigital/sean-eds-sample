@@ -1,0 +1,18 @@
+@use "../../foundation/icons";
+@use "../../shared";
+@use "./placeholders";
+
+/// ### Gets any icon styles
+/// @param {String} $key - The icon name
+/// @param {Boolean} $includePlaceholder [true] - Whether to set the icon placeholder or not
+/// @throw {Error} - If the name is not valid
+@mixin icon($name, $includePlaceholder: true) {
+	@if $includePlaceholder {
+		@extend %icon;
+	}
+
+	$base64: shared.get-value-from-map(icons.$icons, $name);
+
+	-webkit-mask-image: url($base64);
+	mask-image: url($base64);
+}

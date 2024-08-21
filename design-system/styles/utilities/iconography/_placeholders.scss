@@ -1,0 +1,16 @@
+@use "../../utilities/spacing";
+@use "../../utilities/colors";
+
+%icon {
+	display: inline-block;
+	margin: 0 auto;
+	width: var(--icon-width, var(--icon-size, spacing.size(md))) !important;
+	height: var(--icon-height, var(--icon-size, spacing.size(md))) !important;
+	background-color: var(--icon-color, colors.neutral(100)) !important;
+	-webkit-mask-repeat: no-repeat;
+	-webkit-mask-position: center center;
+	-webkit-mask-size: contain;
+	mask-repeat: no-repeat;
+	mask-position: center center;
+	mask-size: contain;
+}

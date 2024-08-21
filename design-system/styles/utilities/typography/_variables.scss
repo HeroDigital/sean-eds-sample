@@ -1,0 +1,276 @@
+@use "sass:map";
+@use "../../shared";
+
+// Base font size
+$base-font-size: 16px;
+
+// Font sizes
+$font-sizes: (
+	xxs: shared.rem(10px),
+	xs: shared.rem(12px),
+	sm: shared.rem(14px),
+	md: shared.rem(16px),
+	lg: shared.rem(18px),
+	xl: shared.rem(22px),
+	xxl: shared.rem(24px)
+) !default;
+
+// Font weights
+$font-weights: (
+	light: 300,
+	regular: 400,
+	medium: 500,
+	semi-bold: 600,
+	bold: 700,
+	extra-bold: 800,
+	black: 900,
+	extra-black: 1000
+) !default;
+
+// Font styles
+$font-styles: (
+	italic: italic,
+	normal: normal,
+	oblique: oblique
+) !default;
+
+// Line heights
+$line-heights: (
+	xs: 1.2,
+	sm: 1.3,
+	md: 1.4,
+	lg: 1.5,
+	xl: 1.6
+) !default;
+
+// Letter spacing
+$letter-spacings: (
+	tighter: -0.05em,
+	tight: -0.025em,
+	normal: 0,
+	wide: 0.025em,
+	wider: 0.05em,
+	widest: 0.1em
+) !default;
+
+// Text shadow
+$text-shadows: (
+	sm: 1px 1px 2px rgba(#000000, 0.25),
+	md: 2px 2px 4px rgba(#000000, 0.25),
+	lg: 3px 3px 6px rgba(#000000, 0.25)
+) !default;
+
+// Text decoration
+$text-decorations: (
+	underline: underline,
+	overline: overline,
+	line-through: line-through
+) !default;
+
+// Text transform
+$text-transforms: (
+	uppercase: uppercase,
+	lowercase: lowercase,
+	capitalize: capitalize
+) !default;
+
+// Text alignment
+$text-alignments: (
+	left: left,
+	center: center,
+	right: right,
+	justify: justify
+) !default;
+
+$typography-elements: (
+	headings: (
+		h1: (
+			mobile: (
+				font-size: shared.rem(50px),
+				line-height: shared.rem(56px)
+			),
+			desktop: (
+				font-size: shared.rem(80px),
+				line-height: shared.rem(86px)
+			),
+			font-family: var(--font-secondary)
+		),
+		h2: (
+			mobile: (
+				font-size: shared.rem(42px),
+				line-height: shared.rem(48px)
+			),
+			desktop: (
+				font-size: shared.rem(64px),
+				line-height: shared.rem(72px)
+			),
+			font-family: var(--font-secondary)
+		),
+		h3: (
+			mobile: (
+				font-size: shared.rem(32px),
+				line-height: shared.rem(40px)
+			),
+			desktop: (
+				font-size: shared.rem(48px),
+				line-height: shared.rem(52px)
+			),
+			font-family: var(--font-secondary)
+		),
+		h4: (
+			mobile: (
+				font-size: shared.rem(24px),
+				line-height: shared.rem(32px)
+			),
+			desktop: (
+				font-size: shared.rem(32px),
+				line-height: shared.rem(40px)
+			),
+			font-family: var(--font-secondary)
+		),
+		h5: (
+			mobile: (
+				font-size: shared.rem(28px),
+				line-height: shared.rem(36px)
+			),
+			desktop: (
+				font-size: shared.rem(32px),
+				line-height: shared.rem(40px)
+			)
+		),
+		h6: (
+			mobile: (
+				font-size: shared.rem(18px),
+				line-height: shared.rem(24px)
+			),
+			desktop: (
+				font-size: shared.rem(24px),
+				line-height: shared.rem(32px)
+			)
+		)
+	),
+	bodies: (
+		b1: (
+			mobile: (
+				font-size: shared.rem(16px),
+				line-height: shared.rem(24px)
+			),
+			desktop: (
+				font-size: shared.rem(20px),
+				line-height: shared.rem(32px)
+			)
+		),
+		b1-strong: (
+			mobile: (
+				font-size: shared.rem(16px),
+				line-height: shared.rem(24px)
+			),
+			desktop: (
+				font-size: shared.rem(20px),
+				line-height: shared.rem(32px)
+			),
+			font-weight: map.get($font-weights, bold)
+		),
+		b2: (
+			mobile: (
+				font-size: shared.rem(14px),
+				line-height: shared.rem(20px)
+			),
+			desktop: (
+				font-size: shared.rem(16px),
+				line-height: shared.rem(24px)
+			)
+		),
+		b2-strong: (
+			mobile: (
+				font-size: shared.rem(14px),
+				line-height: shared.rem(20px)
+			),
+			desktop: (
+				font-size: shared.rem(16px),
+				line-height: shared.rem(24px)
+			),
+			font-weight: map.get($font-weights, bold)
+		),
+		b3: (
+			mobile: (
+				font-size: shared.rem(12px),
+				line-height: shared.rem(18px)
+			),
+			desktop: (
+				font-size: shared.rem(14px),
+				line-height: shared.rem(20px)
+			)
+		),
+		b3-strong: (
+			mobile: (
+				font-size: shared.rem(12px),
+				line-height: shared.rem(18px)
+			),
+			desktop: (
+				font-size: shared.rem(14px),
+				line-height: shared.rem(20px)
+			),
+			font-weight: map.get($font-weights, bold)
+		),
+		b4: (
+			mobile: (
+				font-size: shared.rem(10px),
+				line-height: shared.rem(12px)
+			),
+			desktop: (
+				font-size: shared.rem(10px),
+				line-height: shared.rem(12px)
+			)
+		),
+		b4-strong: (
+			mobile: (
+				font-size: shared.rem(10px),
+				line-height: shared.rem(12px)
+			),
+			desktop: (
+				font-size: shared.rem(10px),
+				line-height: shared.rem(12px)
+			),
+			font-weight: map.get($font-weights, bold)
+		)
+	),
+	specialty: (
+		descriptor: (
+			mobile: (
+				font-size: shared.rem(12px),
+				line-height: shared.rem(14px)
+			),
+			desktop: (
+				font-size: shared.rem(12px),
+				line-height: shared.rem(14px)
+			)
+		),
+		eyebrow: (
+			mobile: (
+				font-size: shared.rem(12px),
+				line-height: normal
+			),
+			desktop: (
+				font-size: shared.rem(16px),
+				line-height: normal
+			),
+			text-transform: uppercase,
+			font-weight: map.get($font-weights, bold),
+			letter-spacing: 0.1rem
+		),
+		eyebrow-lg: (
+			mobile: (
+				font-size: shared.rem(16px),
+				line-height: normal
+			),
+			desktop: (
+				font-size: shared.rem(24px),
+				line-height: normal
+			),
+			text-transform: uppercase,
+			font-weight: map.get($font-weights, bold),
+			letter-spacing: 0.1rem
+		)
+	)
+) !default;

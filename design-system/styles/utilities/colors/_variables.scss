@@ -1,0 +1,43 @@
+@use "sass:map";
+@use "../../shared";
+@use "./functions";
+
+$_brand: shared.theme-get(colors, brand);
+$_neutral: shared.theme-get(colors, neutral);
+$_accent: shared.theme-get(colors, accent);
+$_success: shared.theme-get(colors, alert, success);
+$_warning: shared.theme-get(colors, alert, warning);
+$_fail: shared.theme-get(colors, alert, fail);
+$_utility: (
+	brand-110: map.get($_brand, 110),
+	brand-50-90: functions.safe-rgba(map.get($_brand, 50), 90),
+	brand-90: functions.safe-rgba(map.get($_brand, 100), 90),
+	brand-40: functions.safe-rgba(map.get($_brand, 100), 40),
+	brand-20: functions.safe-rgba(map.get($_brand, 100), 20),
+	dark-80: functions.safe-rgba(map.get($_neutral, 80), 80),
+	dark-60: functions.safe-rgba(map.get($_neutral, 80), 60),
+	dark-40: functions.safe-rgba(map.get($_neutral, 80), 40),
+	dark-20: functions.safe-rgba(map.get($_neutral, 80), 20),
+	light-90: functions.safe-rgba(map.get($_neutral, 0), 90),
+	light-40: functions.safe-rgba(map.get($_neutral, 0), 40),
+	light-20: functions.safe-rgba(map.get($_neutral, 0), 20)
+);
+
+// Base color1 variants
+$base-colors: (
+	brand: $_brand,
+	neutral: $_neutral,
+	accent1: $_accent,
+	success: $_success,
+	warning: $_warning,
+	fail: $_fail,
+	utility: $_utility
+);
+
+/// ### Gets any utility color
+/// @param {String} $key - The color key
+/// @return {String} - The color
+/// @throw {Error} - If the key is not valid
+@function utility($key) {
+	@return shared.get-value-from-map($_utility, $key);
+}

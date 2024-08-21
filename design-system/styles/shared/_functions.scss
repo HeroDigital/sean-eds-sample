@@ -1,0 +1,121 @@
+@use "sass:map";
+@use "sass:math";
+@use "sass:list";
+@use "sass:meta";
+@use "sass:string";
+@use "../foundation/theme" as *;
+
+/// ### Gets all available keys from a map
+/// @param {Map} $map - The target map
+/// @return {String} - A comma separated list of available keys within the provided map
+@function get-keys-from-map($map) {
+	$result: "";
+
+	@each $key, $value in $map {
+		$result: $result + $key;
+
+		// Adds the comma if not the last element
+		@if list.index($map, ($key $value)) != list.length($map) {
+			$result: $result + ",";
+		}
+	}
+
+	@return $result;
+}
+
+/// ### Retrieves a value from the any given map using one or more keys
+/// @param {Map} $map - The target map
+/// @param {...String} $keys... - One or more keys used to retrieve a value from the map
+/// @return {*} - The value retrieved from the map, which may be of any data type
+/// @throw {Error} - An error is thrown if the `$map` variable is not provided or if one of the keys is not valid
+@function get-value-from-map($map, $keys...) {
+	@if not $map {
+		@error "A valid map must be provided";
+	}
+
+	$value: $map;
+
+	@each $key in $keys {
+		@if not map.has-key($value, $key) {
+			@error "Key #{$key} doesn't exist. Available keys: #{get-keys-from-map($value)}";
+		}
+
+		$value: map.get($value, $key);
+	}
+
+	@return $value;
+}
+
+/// This function takes a map as argument and returns it reversed
+/// @param {Map} $map - The target map
+/// @return {Map} - The reversed map
+/// @throw {Error} - An error is thrown if the `$map` variable is not provided
+@function map-reverse($map) {
+	$result: null;
+
+	@if meta.type-of($map) == "map" {
+		$keys: map.keys($map);
+		$map-reversed: ();
+
+		@for $i from list.length($keys) through 1 {
+			$map-reversed: map.merge(
+				$map-reversed,
+				(
+					list.nth($keys, $i): map.get($map, list.nth($keys, $i))
+				)
+			);
+		}
+
+		@if meta.type-of($map-reversed) == "map" {
+			$result: $map-reversed;
+		} @else {
+			@warn 'There was an error reversing the order of "#{$map}"';
+		}
+	} @else {
+		@warn '"#{$map}" is not a valid map';
+	}
+
+	@return $result;
+}
+
+/// ### Retrieves a value from the current theme using one or more keys
+/// @param {...String} $keys... - One or more keys used to retrieve a value from the theme
+/// @return {*} - The value retrieved from the theme, which may be of any data type
+/// @throw {Error} - An error is thrown if the `$theme` variable is not set, indicating that the theme has not been generated or imported
+@function theme-get($keys...) {
+	@if not $theme {
+		@error "The $theme variable has not been set. Make sure to generate and import the theme file";
+	}
+
+	@return get-value-from-map($theme, $keys...);
+}
+
+/// ### Convert a value in pixels to rems
+/// @param {Number} $value - The value in pixels to convert to rems
+/// @param {String} $base [16px] - The base font size to use for the conversion
+/// @return {String} - The converted value in rems
+@function rem($value, $base: 16px) {
+	@return math.div($value, $base) * 1rem;
+}
+
+/// Replace `$search` with `$replace` in `$string`
+/// @param {String} $string - Initial string
+/// @param {String} $search - Substring to replace
+/// @param {String} $replace ('') - New value
+/// @return {String} - Updated string
+@function replace($string, $search, $replace: "") {
+	$index: string.index($string, $search);
+
+	@if $index {
+		@return string.slice($string, 1, $index - 1) + $replace + replace(string.slice($string, $index + string.length($search)), $search, $replace);
+	}
+
+	@return $string;
+}
+
+/// ### Returns !important based on a flag value
+/// @param {Boolean} $important - The flag
+/// @return {String} - !important or empty string rule
+@function is-important($important: true) {
+	@return #{if($important, "!important", "")};
+}

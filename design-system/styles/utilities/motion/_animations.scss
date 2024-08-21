@@ -1,0 +1,35 @@
+@use "./functions";
+@use "./mixins";
+
+/// ### Sets the properties for fading in an element
+/// @param {Number} $x - The horizontal offset.
+/// @param {Number} $y - The vertical offset.
+/// @param {Number} $z - The depth offset.
+/// @param {String} $duration - Sets the length of time the animation takes to complete one cycle.
+/// @param {String} $delay - The length of time to wait before starting the animation.
+/// @param {String} $easing - Sets how intermediate values are calculated for the animation.
+/// @param {String} $fill-mode - Specifies what values are applied by the animation outside the time it is executing.
+/// @param {String} $reduced-motion - The preferred reduced motion value.
+@mixin fade-in(
+	$x: 0,
+	$y: 0,
+	$z: 0,
+	$duration: 500ms,
+	$delay: 0,
+	$easing: functions.easing(direct, direct-curve),
+	$fill-mode: forwards,
+	$reduced-motion: "no-preference"
+) {
+	@keyframes fade-in {
+		to {
+			opacity: 1;
+			transform: translate3d(0, 0, 0);
+		}
+	}
+
+	@include mixins.reduced-motion($reduced-motion) {
+		opacity: 0;
+		transform: translate3d($x, $y, $z);
+		animation: fade-in $easing $fill-mode $duration $delay;
+	}
+}

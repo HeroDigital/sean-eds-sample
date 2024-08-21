@@ -1,0 +1,46 @@
+@use "../../shared";
+
+$_breakpoints: shared.theme-get(breakpoints);
+
+/// Configures a grid with all its modifiers and columns styles
+/// @param {Number} $columns [12] - The max number of columns
+/// @output - The grid configuration including modifiers for both the grid and columns
+@mixin grid($columns: 12) {
+	display: grid;
+	grid-template-columns: repeat($columns, 1fr);
+
+	// Modifiers
+	&.row {
+		grid-auto-flow: row;
+	}
+
+	&.column {
+		grid-auto-flow: column;
+	}
+
+	&.dense {
+		grid-auto-flow: dense;
+	}
+
+	// Columns
+	.col {
+		grid-column: span $columns;
+	}
+
+	@for $i from $columns through 1 {
+		.col-#{$i} {
+			grid-column: span $i;
+		}
+	}
+
+	// Responsive columns
+	@each $size, $breakpoint in $_breakpoints {
+		@media (min-width: $breakpoint) {
+			@for $i from $columns through 1 {
+				.col-#{$size}-#{$i} {
+					grid-column: span $i;
+				}
+			}
+		}
+	}
+}

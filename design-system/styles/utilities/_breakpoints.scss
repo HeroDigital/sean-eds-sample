@@ -1,0 +1,41 @@
+@use "sass:map";
+@use "../shared";
+
+$_breakpoints: shared.theme-get(breakpoints) !default;
+
+/// ### Generates a media query with a width that corresponds to a specific breakpoint
+/// @param {String} $key - The breakpoint key
+/// @param {"min" | "max"} $property ["min"] - The media property type
+/// @param {"portrait" | "landscape"} $orientation - The media query display orientation
+/// @throw {Error} - If the specified breakpoint does not exist in the breakpoints map or the property isn't valid
+@mixin media-query($key, $property: "min", $orientation: null) {
+	@if not map.has-key($_breakpoints, $key) {
+		@error "Breakpoint '#{$key}' does not exist.";
+	}
+
+	@if $property != "min" and $property != "max" {
+		@error "Property '#{$property}' is invalid";
+	}
+
+	$media-property: if($property == "min", "min-width", "max-width");
+	$theme-breakpoint: map.get($_breakpoints, $key);
+	$breakpoint: if($property == "max", ($theme-breakpoint - 1px), $theme-breakpoint);
+
+	@if $orientation {
+		@media (#{$media-property}: #{$breakpoint}) and (orientation: $orientation) {
+			@content;
+		}
+	} @else {
+		@media (#{$media-property}: #{$breakpoint}) {
+			@content;
+		}
+	}
+}
+
+/// ### Generates a media query with a width that corresponds to a specific breakpoint
+/// @param {String} $key - The breakpoint key
+/// @return {String} - The breakpoint
+/// @throw {Error} - If the specified breakpoint does not exist in the breakpoints map or the property isn't valid
+@function breakpoint($key) {
+	@return shared.theme-get(breakpoints, $key);
+}

@@ -1,0 +1,297 @@
+@use "../../shared";
+@use "./variables";
+
+$_breakpoints: shared.theme-get(breakpoints);
+
+// Reset classes
+// Paddings
+// ===================
+.p-0 {
+	padding: 0 !important;
+}
+
+.py-0 {
+	padding-top: 0 !important;
+	padding-bottom: 0 !important;
+}
+
+.px-0 {
+	padding-right: 0 !important;
+	padding-left: 0 !important;
+}
+
+.pt-0 {
+	padding-top: 0 !important;
+}
+
+.pr-0 {
+	padding-right: 0 !important;
+}
+
+.pb-0 {
+	padding-bottom: 0 !important;
+}
+
+.pl-0 {
+	padding-left: 0 !important;
+}
+
+// Margins
+// ===================
+.m-0 {
+	margin: 0 !important;
+}
+
+.m-auto {
+	margin: auto !important;
+}
+
+.my-0 {
+	margin-top: 0 !important;
+	margin-bottom: 0 !important;
+}
+
+.my-auto {
+	margin-top: auto !important;
+	margin-bottom: auto !important;
+}
+
+.mx-0 {
+	margin-right: 0 !important;
+	margin-left: 0 !important;
+}
+
+.mx-auto {
+	margin-right: auto !important;
+	margin-left: auto !important;
+}
+
+.mt-0 {
+	margin-top: 0 !important;
+}
+
+.mt-auto {
+	margin-top: auto !important;
+}
+
+.mr-0 {
+	margin-right: 0 !important;
+}
+
+.mr-auto {
+	margin-right: auto !important;
+}
+
+.mb-0 {
+	margin-bottom: 0 !important;
+}
+
+.mb-auto {
+	margin-bottom: auto !important;
+}
+
+.ml-0 {
+	margin-left: 0 !important;
+}
+
+.ml-auto {
+	margin-left: auto !important;
+}
+
+// Gaps
+// ===================
+.gap-0 {
+	margin: 0 !important;
+}
+
+@each $key, $value in variables.$spacing {
+	// Paddings
+	// ===================
+	.p-#{$key} {
+		padding: $value !important;
+	}
+
+	.py-#{$key} {
+		padding-top: $value !important;
+		padding-bottom: $value !important;
+	}
+
+	.px-#{$key} {
+		padding-right: $value !important;
+		padding-left: $value !important;
+	}
+
+	.pt-#{$key} {
+		padding-top: $value !important;
+	}
+
+	.pr-#{$key} {
+		padding-right: $value !important;
+	}
+
+	.pb-#{$key} {
+		padding-bottom: $value !important;
+	}
+
+	.pl-#{$key} {
+		padding-left: $value !important;
+	}
+
+	@each $size, $breakpoint in $_breakpoints {
+		.p-#{$size}-#{$key} {
+			@media (min-width: $breakpoint) {
+				padding: $value !important;
+			}
+		}
+
+		.py-#{$size}-#{$key} {
+			@media (min-width: $breakpoint) {
+				padding-top: $value !important;
+				padding-bottom: $value !important;
+			}
+		}
+
+		.px-#{$size}-#{$key} {
+			@media (min-width: $breakpoint) {
+				padding-right: $value !important;
+				padding-left: $value !important;
+			}
+		}
+
+		.pt-#{$size}-#{$key} {
+			@media (min-width: $breakpoint) {
+				padding-top: $value !important;
+			}
+		}
+
+		.pr-#{$size}-#{$key} {
+			@media (min-width: $breakpoint) {
+				padding-right: $value !important;
+			}
+		}
+
+		.pb-#{$size}-#{$key} {
+			@media (min-width: $breakpoint) {
+				padding-bottom: $value !important;
+			}
+		}
+
+		.pl-#{$size}-#{$key} {
+			@media (min-width: $breakpoint) {
+				padding-left: $value !important;
+			}
+		}
+	}
+
+	// Margins
+	// ===================
+	.m-#{$key} {
+		margin: $value !important;
+	}
+
+	.my-#{$key} {
+		margin-top: $value !important;
+		margin-bottom: $value !important;
+	}
+
+	.mx-#{$key} {
+		margin-right: $value !important;
+		margin-left: $value !important;
+	}
+
+	.mt-#{$key} {
+		margin-top: $value !important;
+	}
+
+	.mr-#{$key} {
+		margin-right: $value !important;
+	}
+
+	.mb-#{$key} {
+		margin-bottom: $value !important;
+	}
+
+	.ml-#{$key} {
+		margin-left: $value !important;
+	}
+
+	@each $size, $breakpoint in $_breakpoints {
+		.m-#{$size}-#{$key} {
+			@media (min-width: $breakpoint) {
+				margin: $value !important;
+			}
+		}
+
+		.my-#{$size}-#{$key} {
+			@media (min-width: $breakpoint) {
+				margin-top: $value !important;
+				margin-bottom: $value !important;
+			}
+		}
+
+		.mx-#{$size}-#{$key} {
+			@media (min-width: $breakpoint) {
+				margin-right: $value !important;
+				margin-left: $value !important;
+			}
+		}
+
+		.mt-#{$size}-#{$key} {
+			@media (min-width: $breakpoint) {
+				margin-top: $value !important;
+			}
+		}
+
+		.mr-#{$size}-#{$key} {
+			@media (min-width: $breakpoint) {
+				margin-right: $value !important;
+			}
+		}
+
+		.mb-#{$size}-#{$key} {
+			@media (min-width: $breakpoint) {
+				margin-bottom: $value !important;
+			}
+		}
+
+		.ml-#{$size}-#{$key} {
+			@media (min-width: $breakpoint) {
+				margin-left: $value !important;
+			}
+		}
+	}
+
+	// Gaps
+	// ===================
+	.gap-#{$key} {
+		gap: $value !important;
+	}
+
+	.gapx-#{$key} {
+		gap: 0 $value !important;
+	}
+
+	.gapy-#{$key} {
+		gap: $value 0 !important;
+	}
+
+	@each $size, $breakpoint in $_breakpoints {
+		.gap-#{$size}-#{$key} {
+			@media (min-width: $breakpoint) {
+				gap: $value !important;
+			}
+		}
+
+		.gapx-#{$size}-#{$key} {
+			@media (min-width: $breakpoint) {
+				gap: 0 $value !important;
+			}
+		}
+
+		.gapy-#{$size}-#{$key} {
+			@media (min-width: $breakpoint) {
+				gap: $value 0 !important;
+			}
+		}
+	}
+}

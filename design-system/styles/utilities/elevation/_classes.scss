@@ -1,0 +1,7 @@
+@use "../../shared";
+
+@each $key, $value in shared.theme-get(elevation) {
+	.elevation-#{$key} {
+		box-shadow: $value shared.is-important(true);
+	}
+}
