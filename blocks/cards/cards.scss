@@ -1,0 +1,34 @@
+@use "../../design-system/styles/utilities/ratios/mixins" as ratios;
+@use "../../design-system/styles/utilities/colors";
+@use "../../design-system/styles/utilities/spacing";
+
+.cards {
+	> ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(257px, 1fr));
+		grid-gap: spacing.size(lg);
+
+		> li {
+			border: 1px solid colors.neutral(10);
+			background-color: colors.brand(110);
+
+			img {
+				@include ratios.aspect-ratio("1 / 1");
+
+				width: 100%;
+				object-fit: cover;
+			}
+		}
+	}
+
+	.cards-card-body {
+		margin: 16px;
+	}
+
+	.cards-card-image {
+		line-height: 0;
+	}
+}

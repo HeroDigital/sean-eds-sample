@@ -4,13 +4,9 @@
  * https://www.aem.live/developer/block-collection/fragment
  */
 
-import {
-  decorateMain,
-} from '../../scripts/scripts.js';
+import { decorateMain } from '../../scripts/scripts.js';
 
-import {
-  loadBlocks,
-} from '../../scripts/aem.js';
+import { loadBlocks } from '../../scripts/aem.js';
 
 /**
  * Loads a fragment.
@@ -22,6 +18,7 @@ export async function loadFragment(path) {
     // eslint-disable-next-line no-param-reassign
     path = path.replace(/(\.plain)?\.html/, '');
     const resp = await fetch(`${path}.plain.html`);
+
     if (resp.ok) {
       const main = document.createElement('main');
       main.innerHTML = await resp.text();
