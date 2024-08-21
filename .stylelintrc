@@ -1,0 +1,29 @@
+{
+	"extends": ["stylelint-config-standard-scss"],
+	"ignoreFiles": ["libs/design-system/src/styles/foundation/_icons.scss"],
+	"rules": {
+		"color-hex-length": "long",
+		"color-named": ["never", { "ignore": ["inside-function"] }],
+		"at-rule-empty-line-before": [
+			"always",
+			{ "ignore": ["inside-block", "after-comment", "first-nested", "blockless-after-same-name-blockless"] }
+		],
+		"rule-empty-line-before": ["always", { "ignore": ["after-comment", "first-nested"] }],
+		"selector-class-pattern": null,
+		"custom-property-pattern": null,
+		"value-keyword-case": null,
+		"no-duplicate-selectors": null,
+		"color-no-invalid-hex": true,
+		"property-no-unknown": [true, { "ignoreProperties": ["line-clamp"] }],
+		"function-no-unknown": null,
+		"no-descending-specificity": null,
+		"property-no-vendor-prefix": null,
+		"selector-pseudo-class-no-unknown": null,
+		"scss/dollar-variable-empty-line-before": null,
+		"scss/dollar-variable-pattern": null,
+		"scss/at-function-pattern": null,
+		"scss/percent-placeholder-pattern": null,
+		"scss/at-if-no-null": null,
+		"scss/at-extend-no-missing-placeholder": null
+	}
+}
